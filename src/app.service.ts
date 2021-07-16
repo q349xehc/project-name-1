@@ -4,6 +4,7 @@ import axios from 'axios';
 @Injectable()
 export class AppService {
   getHello(): string {
+    // Паша: А где Валера
     return 'Паш, мы почти смогли, или не очень';
   }
   getWorkTime(useridParam: number, dateParam: string /* string в формате 'YYYY-MM-DD' */): number {
