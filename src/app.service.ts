@@ -9,7 +9,7 @@ export class AppService {
     // Валера: Лично я на Озере ледяных Оков сражаюсь за орду, а где Вика понятия не имею.
     return 'Паш, мы почти смогли, или не очень';
   }
-  getWorkTime(useridParam: number, dateParam: string /* string в формате 'YYYY-MM-DD' */): number {
+  async getWorkTime(useridParam: number, dateParam: string /* string в формате 'YYYY-MM-DD' */): Promise<number> {
     var z=0;
     axios.get(`http://admin:thuvj1sh@dev-redmine.gnedov.info:8380/time_entries.json?user_id=${useridParam}&spent_on=${dateParam}`).then(function (response) {
     
@@ -25,6 +25,7 @@ export class AppService {
         console.log(z);
       }
     })
+
     return z;
   }
 }
