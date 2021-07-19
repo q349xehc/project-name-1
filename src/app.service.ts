@@ -10,8 +10,9 @@ export class AppService {
     // Покатит.
     return 'Паш, мы почти смогли, или не очень';
   }
-  async getWorkTime(useridParam: number, dateParam: string /* string в формате 'YYYY-MM-DD' */): Promise<number> {
+  async getWorkTime(useridParam: number, dateParam: string /* string в формате 'YYYY-MM-DD' */): Promise<number> { // TODO: тоже вернуть ResponseType
     var z=0;
+    var result; // TODO: Определить каким-то образом тип переменной ResponseType
     // poshli v main
     const response = await axios.get(`http://admin:thuvj1sh@dev-redmine.gnedov.info:8380/time_entries.json?user_id=${useridParam}&spent_on=${dateParam}`)
     const timeEntries = response.data.time_entries;
@@ -25,7 +26,8 @@ export class AppService {
       z=z+timeItem.hours;
       console.log(z);
     }
-    return z;
+    // TODO: Заполнить это значение - заполнить все необходимые поля в структуре
+    return z; // TODO: Вернуть вместо z переменную с нужными значениями
   }
 }
 

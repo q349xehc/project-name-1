@@ -12,7 +12,7 @@ export class AppController {
   }
   
   @Post('get-work-time')
-  async getWorkTime(@Body() request: RequestType): Promise<number> {
+  async getWorkTime(@Body() request: RequestType): Promise<number> { // TODO: вернуть ResponseType
     return await this.appService.getWorkTime(request.userId, request.date);
   }
 }
