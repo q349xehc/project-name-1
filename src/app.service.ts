@@ -7,6 +7,7 @@ export class AppService {
     // Паша: А где Валера
     // Паша: Где все?
     // Валера: Лично я на Озере ледяных Оков сражаюсь за орду, а где Вика понятия не имею.
+    // Покатит.
     return 'Паш, мы почти смогли, или не очень';
   }
   async getWorkTime(useridParam: number, dateParam: string /* string в формате 'YYYY-MM-DD' */): Promise<number> {
