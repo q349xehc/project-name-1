@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { RequestType } from './request-type';
+import { ResponseType } from './response-type';
+
 
 @Controller()
 export class AppController {
@@ -12,7 +13,7 @@ export class AppController {
   }
   
   @Post('get-work-time')
-  async getWorkTime(@Body() request: RequestType): Promise<number> { // TODO: вернуть ResponseType
+  async getWorkTime(@Body() request: ResponseType): Promise<ResponseType> {
     return await this.appService.getWorkTime(request.userId, request.date);
   }
 }
