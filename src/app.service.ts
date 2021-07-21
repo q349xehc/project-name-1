@@ -7,7 +7,6 @@ export class AppService {
   getHello(): string {
     return 'Паш, мы почти смогли, или не очень';
   }
-  // da
   async getWorkTime(useridParam: number, dateParam: string /* string в формате 'YYYY-MM-DD' */): Promise<ResponseType> {
     var z=0;
     // TODO: заменить часть url-а на получаемую из конфига в вызове функции axios.get -
@@ -19,15 +18,12 @@ export class AppService {
     for (var i = 1; i < timeEntries.length; i++) {
       var timeItem = timeEntries[i];
       var user = timeItem.user;
-      var userid = user.id;
-      var hours = timeItem.hours;
-      var Date = timeItem.spent_on;
-      console.log(i, ':', 'userid =', userid, '; Hours =', hours, '; Date =', Date);
       z=z+timeItem.hours;
     }
     var daywork: ResponseType = {
-      date: dateParam,
+      Redmineusername: user.name,
       userId: useridParam,
+      date: dateParam,
       workTime: z
     }
     return daywork;

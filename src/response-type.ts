@@ -1,5 +1,6 @@
 export type ResponseType = {
 	userId: number,
 	date: string,
-	workTime: number
+	workTime: number,
+	Redmineusername: string
 }
