@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { ResponseType } from './response-type';
+import { config } from './config-reader';
 
 @Injectable()
 export class AppService {
@@ -13,7 +14,7 @@ export class AppService {
     // перед этим если нужен какой-то ещё вспомогательный код, то тоже можно писать и себя не
     // ограничивать в строчках кода
     // смотреть в каменты в config-reader.ts
-    const response = await axios.get(`http://admin:thuvj1sh@dev-redmine.gnedov.info:8380/time_entries.json?user_id=${useridParam}&spent_on=${dateParam}`)
+    const response = await axios.get(config.redmineUrl + `/time_entries.json?user_id=${useridParam}&spent_on=${dateParam}`);
     const timeEntries = response.data.time_entries;
     for (var i = 1; i < timeEntries.length; i++) {
       var timeItem = timeEntries[i];
