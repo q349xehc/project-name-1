@@ -6,28 +6,23 @@ import { config } from './config-reader';
 @Injectable()
 export class AppService {
   
-  getHello(): string {
-    return 'Паш, мы почти смогли, или не очень';
-  }
-  
   /**
    * Получение рабочего времени из redmine
-   * @param useridParam 
+   * @param userIdParam 
    * @param dateParam 
    * @returns 
    */
-  async getWorkTime(useridParam: number, dateParam: string): Promise<ResponseType> {
-    let sumTime = 0;
-    const response = await axios.get(config.redmineUrl + `/time_entries.json?user_id=${useridParam}&spent_on=${dateParam}`);
+  async getWorkTime(userIdParam: number, dateParam: string): Promise<ResponseType> {
+    let sumTime: number = 0;
+    const response = await axios.get(`${config.redmineUrl}/time_entries.json?user_id=${userIdParam}&spent_on=${dateParam}`);
     const timeEntries = response.data.time_entries;
+    const user = timeEntries[0].user;
     for (var i = 1; i < timeEntries.length; i++) {
-      var timeItem = timeEntries[i];
-      var user = timeItem.user;
-      sumTime = sumTime + timeItem.hours;
+      sumTime = sumTime + timeEntries[i].hours;
     }
     const result: ResponseType = {
       userName: user.name,
-      userId: useridParam,
+      userId: userIdParam,
       date: dateParam,
       workTime: sumTime
     }
