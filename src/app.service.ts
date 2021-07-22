@@ -26,7 +26,7 @@ export class AppService {
       sumTime = sumTime + timeItem.hours;
     }
     const result: ResponseType = {
-      Redmineusername: user.name,
+      userName: user.name,
       userId: useridParam,
       date: dateParam,
       workTime: sumTime
